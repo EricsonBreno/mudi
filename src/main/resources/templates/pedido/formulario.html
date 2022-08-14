@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head th:replace="~{base :: head}"></head>
+
+  <body>
+
+    <div th:replace="~{base :: logo}"></div>
+
+    <div class="container">
+      <div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+
+      <div class="card mt-3">
+        <form th:object="${requisicaoNovoPedido}" action="/pedido/novo" method="POST" class="card-body">
+          <div class="form-group mb-3">
+            <label for="nomeProduto">Produto</label>
+            <input th:field="*{nomeProduto}" th:errorclass="is-invalid" id="nomeProduto" name="nomeProduto" placeholder="Nome do produto" class="form-control"/>
+            <small>Informe o nome do produto</small>
+            <div class="invalid-feedback" th:errors="*{nomeProduto}">
+              Erros
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="urlProduto">URL do produto</label>
+            <input th:field="*{urlProduto}" th:errorclass="is-invalid" id="urlProduto" name="urlProduto" placeholder="URL do produto" class="form-control"/>
+            <small>Procure em um site o produto desejado e cole aqui a URL da página</small>
+            <div class="invalid-feedback" th:errors="*{urlProduto}">
+              Erros
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="urlImagem">URL da imagem</label>
+            <input th:field="*{urlImagem}" th:errorclass="is-invalid" id="urlImagem" name="urlImagem" placeholder="URL da imagem" class="form-control"/>
+            <small>Copie a URL de uma imagem do produto com boa qualidade e cole aqui</small>
+            <div class="invalid-feedback" th:errors="*{urlImagem}">
+              Erros
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="descricao">Descrição</label>
+            <textarea th:field="*{descricao}" th:errorclass="is-invalid" id="descricao" name="descricao" placeholder="Adicione a descrição detalhada do produto e suas específicações" class="form-control"></textarea>
+            <div class="invalid-feedback" th:errors="*{descricao}">
+              Erros
+            </div>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Cadastrar</button>
+        </form>
+      </div>
+
+  </body>
+</html>
